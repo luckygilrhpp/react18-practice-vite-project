@@ -1,5 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit"
 import{request} from '../../utils/request'
+import { setToken as _setToken,getToken as _getToken } from "../../utils/token";
+
 const userStore = createSlice({
   name:'user',
   initialState:{
@@ -14,7 +16,7 @@ const userStore = createSlice({
       console.log(state,'state')
       console.log(action,'action')
     // 存储token --- localStorage
-    localStorage.setItem('token_key',action.payload)
+    setToken(action.payload)
     }
   }
 })
