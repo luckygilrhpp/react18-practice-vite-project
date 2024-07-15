@@ -3,14 +3,18 @@ import{request} from '../../utils/request'
 const userStore = createSlice({
   name:'user',
   initialState:{
-    token:'',
+    //初始化token
+    token:localStorage.getItem('token_key')||'',
   },
   //同步修改方法
   reducers:{
     setToken(state,action){
+      // 获取并存储token --- redux
       state.token = action.payload
-      console.log('state',state);
-      console.log('action',action);
+      console.log(state,'state')
+      console.log(action,'action')
+    // 存储token --- localStorage
+    localStorage.setItem('token_key',action.payload)
     }
   }
 })
